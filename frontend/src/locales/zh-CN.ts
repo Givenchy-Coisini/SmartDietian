@@ -5,6 +5,8 @@ export default {
   },
   header: {
     newSession: '新建会话',
+    switchToEnglish: '切换到英文',
+    switchToChinese: '切换到中文',
   },
   sidebar: {
     title: '历史会话',
@@ -16,6 +18,8 @@ export default {
     emptySubtitle: '我会帮您识别食材并推荐食谱',
     placeholder: '描述你有的食材...',
     sending: '正在思考...',
+    assistantLabel: 'AI',
+    streamInterrupted: '⚠️ 流式响应中断',
   },
   error: {
     uploadFailed: '获取上传 URL 失败',

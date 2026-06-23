@@ -5,6 +5,8 @@ export default {
   },
   header: {
     newSession: 'New Session',
+    switchToEnglish: 'Switch to English',
+    switchToChinese: 'Switch to Chinese',
   },
   sidebar: {
     title: 'Chat History',
@@ -16,6 +18,8 @@ export default {
     emptySubtitle: 'I will help you identify ingredients and recommend recipes',
     placeholder: 'Describe the ingredients you have...',
     sending: 'Thinking...',
+    assistantLabel: 'AI',
+    streamInterrupted: '⚠️ Streaming response interrupted',
   },
   error: {
     uploadFailed: 'Failed to get upload URL',

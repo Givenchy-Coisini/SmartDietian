@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { ref, watch, nextTick } from 'vue'
+import { useI18n } from 'vue-i18n'
 import ChatMessage from './ChatMessage.vue'
 import ChatEmpty from './ChatEmpty.vue'
 import ChatInput from './ChatInput.vue'
 import { streamChat } from '@/api/chat'
 import { useImageUpload } from '@/composables/useImageUpload'
 import type { ChatMessage as ChatMessageType } from '@/api/chat'
+
+const { t } = useI18n()
 
 const props = defineProps<{
   messages: ChatMessageType[]
@@ -74,7 +77,7 @@ async function handleSend(text: string, file: File | null) {
     )
     emit('sendMessage')
   } catch {
-    aiMsg.content += `\n\n⚠️ 流式响应中断`
+    aiMsg.content += `\n\n${t('chat.streamInterrupted')}`
   } finally {
     emit('setLoading', false)
   }

@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { User, LoaderCircle } from 'lucide-vue-next'
 import MarkdownIt from 'markdown-it'
 import type { ChatMessage } from '@/api/chat'
+
+const { t } = useI18n()
 
 const props = defineProps<{
   message: ChatMessage
@@ -35,7 +38,7 @@ const isUser = computed(() => props.message.role === 'user')
         : 'bg-gradient-to-br from-accent-400 to-primary-500 shadow-accent-200/50'"
     >
       <User v-if="isUser" class="w-4 h-4 text-white" />
-      <span v-else class="text-white text-xs font-bold">AI</span>
+      <span v-else class="text-white text-xs font-bold">{{ t('chat.assistantLabel') }}</span>
     </div>
 
     <div
@@ -51,7 +54,7 @@ const isUser = computed(() => props.message.role === 'user')
       <div v-else>
         <div v-if="loading && !message.content" class="flex items-center gap-2 text-gray-400">
           <LoaderCircle class="w-4 h-4 animate-spin" />
-          <span class="text-sm">{{ $t('chat.sending') }}</span>
+          <span class="text-sm">{{ t('chat.sending') }}</span>
         </div>
         <div
           v-else
