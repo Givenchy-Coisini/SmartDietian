@@ -1,21 +1,24 @@
+import axios from 'axios'
+
+import { request } from '@/utils/request'
+
 interface PresignResponse {
   uploadUrl: string
   accessUrl: string
+  contentType?: string
 }
 
-const API_BASE = '/api/v1'
-
 export async function getPresignUrl(filename: string): Promise<PresignResponse> {
-  const res = await fetch(`${API_BASE}/oss/presign?filename=${encodeURIComponent(filename)}`)
-  if (!res.ok) throw new Error(`HTTP ${res.status}`)
-  return res.json()
+  return await request<PresignResponse>({
+    url: '/oss/presign',
+    method: 'GET',
+    params: { filename },
+  })
 }
 
 export async function uploadToOss(uploadUrl: string, file: File): Promise<void> {
-  const res = await fetch(uploadUrl, {
-    method: 'PUT',
-    body: file,
+  await axios.put(uploadUrl, file, {
     headers: { 'Content-Type': file.type },
+    transformRequest: [(data) => data],
   })
-  if (!res.ok) throw new Error(`Upload failed: HTTP ${res.status}`)
 }

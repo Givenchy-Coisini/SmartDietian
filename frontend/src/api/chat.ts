@@ -1,3 +1,5 @@
+import { request } from '@/utils/request'
+
 export interface ChatMessage {
   role: 'user' | 'assistant'
   content: string
@@ -15,12 +17,12 @@ export interface Thread {
   preview: string
 }
 
-const API_BASE = '/api/v1'
+const API_BASE = import.meta.env.VITE_API_BASE ?? '/api/v1'
 
 export async function streamChat(
   req: ChatRequest,
   onChunk: (text: string) => void,
-  signal?: AbortSignal
+  signal?: AbortSignal,
 ): Promise<void> {
   const res = await fetch(`${API_BASE}/chat/stream`, {
     method: 'POST',
@@ -44,22 +46,26 @@ export async function streamChat(
 }
 
 export async function getMessages(threadId: string): Promise<ChatMessage[]> {
-  const res = await fetch(`${API_BASE}/chat/messages?thread_id=${threadId}`)
-  if (!res.ok) throw new Error(`HTTP ${res.status}`)
-  const data = await res.json()
+  const data = await request<{ messages?: ChatMessage[] }>({
+    url: '/chat/messages',
+    method: 'GET',
+    params: { thread_id: threadId },
+  })
   return data.messages ?? []
 }
 
 export async function deleteMessages(threadId: string): Promise<void> {
-  const res = await fetch(`${API_BASE}/chat/messages?thread_id=${threadId}`, {
+  await request<void>({
+    url: '/chat/messages',
     method: 'DELETE',
+    params: { thread_id: threadId },
   })
-  if (!res.ok) throw new Error(`HTTP ${res.status}`)
 }
 
 export async function getThreads(): Promise<Thread[]> {
-  const res = await fetch(`${API_BASE}/chat/threads`)
-  if (!res.ok) throw new Error(`HTTP ${res.status}`)
-  const data = await res.json()
+  const data = await request<{ threads?: Thread[] }>({
+    url: '/chat/threads',
+    method: 'GET',
+  })
   return data.threads ?? []
 }
