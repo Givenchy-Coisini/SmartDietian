@@ -1,12 +1,23 @@
 [project]
 name = "smartdietian"
 version = "0.1.0"
-description = "Add your description here"
+description = "SmartDietian backend: FastAPI + LangChain/LangGraph personal chief agent."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "aiosqlite>=0.22.1",
+    "alibabacloud-oss-v2>=1.2.4",
+    "fastapi>=0.128.0",
     "langchain>=1.3.10",
+    "langchain-openai>=0.2.0",
+    "langchain-tavily>=0.2.17",
+    "langgraph-checkpoint-redis>=0.4.0",
+    "langgraph-checkpoint-sqlite>=3.1.0",
+    "openai>=2.15.0",
     "python-dotenv>=1.2.2",
+    "redis>=5.0.0",
+    "tavily-python>=0.7.22",
+    "uvicorn>=0.40.0",
 ]
 
 [[tool.uv.index]]
