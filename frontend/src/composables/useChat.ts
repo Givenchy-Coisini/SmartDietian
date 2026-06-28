@@ -58,7 +58,7 @@ export function useChat() {
         {
           message: text,
           image_url: imageUrl || null,
-          thread_id: threadId.value,
+          thread_id: threadId.value
         },
         (chunk) => {
           aiMsg.content += chunk
@@ -68,7 +68,7 @@ export function useChat() {
       loadThreads()
     } catch (err: unknown) {
       if (err instanceof Error && err.name !== 'AbortError') {
-        aiMsg.content += `\n\n⚠️ 流式响应中断`
+        aiMsg.content += '\n\n⚠️ 流式响应中断'
       }
     } finally {
       isLoading.value = false
@@ -114,6 +114,6 @@ export function useChat() {
     sendMessage,
     stopStreaming,
     newSession,
-    deleteThread,
+    deleteThread
   }
 }

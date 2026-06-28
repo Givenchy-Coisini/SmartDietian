@@ -1,17 +1,17 @@
 export default {
   app: {
     title: 'AI 私人厨师',
-    subtitle: '上传食材图片，获取个性化食谱推荐',
+    subtitle: '上传食材图片，获取个性化食谱推荐'
   },
   header: {
     newSession: '新建会话',
     switchToEnglish: '切换到英文',
-    switchToChinese: '切换到中文',
+    switchToChinese: '切换到中文'
   },
   sidebar: {
     title: '历史会话',
     empty: '暂无历史会话',
-    delete: '删除',
+    delete: '删除'
   },
   chat: {
     emptyTitle: '上传食材图片开始吧',
@@ -19,12 +19,12 @@ export default {
     placeholder: '描述你有的食材...',
     sending: '正在思考...',
     assistantLabel: 'AI',
-    streamInterrupted: '⚠️ 流式响应中断',
+    streamInterrupted: '⚠️ 流式响应中断'
   },
   error: {
     uploadFailed: '获取上传 URL 失败',
     historyFailed: '获取历史消息失败',
     clearFailed: '清空历史消息失败',
-    streamFailed: '流式响应错误',
-  },
+    streamFailed: '流式响应错误'
+  }
 }

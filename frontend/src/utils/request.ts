@@ -1,14 +1,14 @@
 import axios, {
   type AxiosInstance,
   type AxiosRequestConfig,
-  type AxiosResponse,
+  type AxiosResponse
 } from 'axios'
 
 axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
 
 const service: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_BASE ?? '/api/v1',
-  timeout: 30_000,
+  timeout: 30_000
 })
 
 service.interceptors.request.use(
@@ -19,7 +19,7 @@ service.interceptors.request.use(
     }
     return config
   },
-  (error) => Promise.reject(error),
+  (error) => Promise.reject(error)
 )
 
 service.interceptors.response.use(
@@ -38,7 +38,7 @@ service.interceptors.response.use(
     }
     console.error('[request] 网络异常:', error.message)
     return Promise.reject(new Error(error.message || '网络异常'))
-  },
+  }
 )
 
 export function request<T = unknown>(config: AxiosRequestConfig): Promise<T> {

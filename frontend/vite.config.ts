@@ -6,12 +6,12 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
-    },
+      '@': resolve(__dirname, 'src')
+    }
   },
   build: {
     outDir: resolve(__dirname, '../app/static'),
-    emptyOutDir: true,
+    emptyOutDir: true
   },
   server: {
     port: 5188,
@@ -19,8 +19,8 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: 'http://127.0.0.1:8001',
-        changeOrigin: true,
-      },
-    },
-  },
+        changeOrigin: true
+      }
+    }
+  }
 })

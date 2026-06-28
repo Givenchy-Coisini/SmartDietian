@@ -25,7 +25,7 @@ const {
   previewUrl,
   createPreview,
   upload,
-  clear: clearImage,
+  clear: clearImage
 } = useImageUpload()
 
 const chatContainer = ref<HTMLDivElement | null>(null)
@@ -69,7 +69,7 @@ async function handleSend(text: string, file: File | null) {
       {
         message: text,
         image_url: imageUrl,
-        thread_id: props.threadId,
+        thread_id: props.threadId
       },
       (chunk) => {
         aiMsg.content += chunk

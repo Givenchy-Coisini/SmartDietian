@@ -1,17 +1,17 @@
 export default {
   app: {
     title: 'AI Private Chef',
-    subtitle: 'Upload food ingredient photos for personalized recipe recommendations',
+    subtitle: 'Upload food ingredient photos for personalized recipe recommendations'
   },
   header: {
     newSession: 'New Session',
     switchToEnglish: 'Switch to English',
-    switchToChinese: 'Switch to Chinese',
+    switchToChinese: 'Switch to Chinese'
   },
   sidebar: {
     title: 'Chat History',
     empty: 'No conversations yet',
-    delete: 'Delete',
+    delete: 'Delete'
   },
   chat: {
     emptyTitle: 'Upload ingredient photos to get started',
@@ -19,12 +19,12 @@ export default {
     placeholder: 'Describe the ingredients you have...',
     sending: 'Thinking...',
     assistantLabel: 'AI',
-    streamInterrupted: '⚠️ Streaming response interrupted',
+    streamInterrupted: '⚠️ Streaming response interrupted'
   },
   error: {
     uploadFailed: 'Failed to get upload URL',
     historyFailed: 'Failed to load message history',
     clearFailed: 'Failed to clear message history',
-    streamFailed: 'Streaming response error',
-  },
+    streamFailed: 'Streaming response error'
+  }
 }

@@ -22,13 +22,13 @@ const API_BASE = import.meta.env.VITE_API_BASE ?? '/api/v1'
 export async function streamChat(
   req: ChatRequest,
   onChunk: (text: string) => void,
-  signal?: AbortSignal,
+  signal?: AbortSignal
 ): Promise<void> {
   const res = await fetch(`${API_BASE}/chat/stream`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(req),
-    signal,
+    signal
   })
 
   if (!res.ok) {
@@ -49,7 +49,7 @@ export async function getMessages(threadId: string): Promise<ChatMessage[]> {
   const data = await request<{ messages?: ChatMessage[] }>({
     url: '/chat/messages',
     method: 'GET',
-    params: { thread_id: threadId },
+    params: { thread_id: threadId }
   })
   return data.messages ?? []
 }
@@ -58,14 +58,14 @@ export async function deleteMessages(threadId: string): Promise<void> {
   await request<void>({
     url: '/chat/messages',
     method: 'DELETE',
-    params: { thread_id: threadId },
+    params: { thread_id: threadId }
   })
 }
 
 export async function getThreads(): Promise<Thread[]> {
   const data = await request<{ threads?: Thread[] }>({
     url: '/chat/threads',
-    method: 'GET',
+    method: 'GET'
   })
   return data.threads ?? []
 }

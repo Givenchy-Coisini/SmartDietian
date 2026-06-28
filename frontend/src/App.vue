@@ -15,7 +15,7 @@ const {
   loadThreads,
   switchThread,
   newSession,
-  deleteThread,
+  deleteThread
 } = useChat()
 
 const chatRef = ref<InstanceType<typeof AppChat> | null>(null)

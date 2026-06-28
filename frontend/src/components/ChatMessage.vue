@@ -15,7 +15,7 @@ const props = defineProps<{
 const md = new MarkdownIt({
   html: false,
   linkify: true,
-  breaks: true,
+  breaks: true
 })
 
 const renderedContent = computed(() => {
