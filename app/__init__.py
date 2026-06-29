@@ -1,2 +1,0 @@
-def agents():
-    return None
